@@ -6,9 +6,7 @@ import javax.persistence.Persistence;
 
 public class JPAUtil {
 	
-//	private static final EntityManagerFactory factory = Persistence.createEntityManagerFactory("pu-eclipselink");
-	
-	private static final EntityManagerFactory factory = Persistence.createEntityManagerFactory("pu-hibernate");
+	private static final EntityManagerFactory factory = Persistence.createEntityManagerFactory("default");
 
 	public EntityManager getEntityManager() {
 		return factory.createEntityManager();
