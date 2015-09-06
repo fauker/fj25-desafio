@@ -1,0 +1,50 @@
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+     http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+    version="2.0">
+
+ <persistence-unit name="pu-hibernate">
+
+   <!-- provedor/implementacao do JPA -->
+   <provider>org.hibernate.ejb.HibernatePersistence</provider>
+
+   <!-- entidade mapeada -->
+   <class>br.com.fauker.jpa.domain.Conta</class>
+   <class>br.com.fauker.jpa.domain.Movimentacao</class>
+
+   <properties>
+  <!-- dados da conexao -->
+	<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+	<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/jpa" />
+	<property name="javax.persistence.jdbc.user" value="root" />
+	<property name="javax.persistence.jdbc.password" value="root" />
+
+   <!--  propriedades do hibernate -->
+   <property name="hibernate.dialect" 
+      value="org.hibernate.dialect.MySQL5InnoDBDialect" />
+  <property name="hibernate.show_sql" value="true" />
+  <property name="hibernate.format_sql" value="true" />
+
+  <!--  atualiza o banco, gera as tabelas se for preciso -->
+  <property name="hibernate.hbm2ddl.auto" value="update" />
+    
+   </properties>
+ </persistence-unit>
+ 
+	<persistence-unit name="pu-eclipselink"
+		transaction-type="RESOURCE_LOCAL">
+		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+	   <class>br.com.fauker.jpa.domain.Conta</class>
+	   <class>br.com.fauker.jpa.domain.Movimentacao</class>		
+		<exclude-unlisted-classes>false</exclude-unlisted-classes>
+		<properties>
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/jpa" />
+			<property name="javax.persistence.jdbc.user" value="root" />
+			<property name="javax.persistence.jdbc.password" value="root" />
+			<property name="eclipselink.ddl-generation" value="drop-and-create-tables" />
+			<property name="eclipselink.ddl-generation.output-mode" value="database" />
+		</properties>
+	</persistence-unit> 
+</persistence>
