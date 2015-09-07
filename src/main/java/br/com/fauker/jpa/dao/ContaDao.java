@@ -3,6 +3,10 @@ package br.com.fauker.jpa.dao;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -33,7 +37,7 @@ public class ContaDao {
 		return this.em.createQuery("select c from Conta c", Conta.class).getResultList();
 	}
 		
-	public List<Conta> listaComCriteria() {
+	public List<Conta> listaComCriteriaHibernate() {
 		Session session = this.em.unwrap(Session.class);
 		Criteria criteria = session.createCriteria(Conta.class);
 		return criteria.list();
@@ -42,6 +46,16 @@ public class ContaDao {
 	public List<Conta> listaComUaiCriteria() {
 		UaiCriteria<Conta> uaiCriteria = UaiCriteriaFactory.createQueryCriteria(this.em, Conta.class);
 		return uaiCriteria.getResultList();
+	}
+	
+	public List<Conta> listaComCriteriaJPA() {
+		CriteriaBuilder builder = this.em.getCriteriaBuilder();
+		CriteriaQuery<Conta> query = builder.createQuery(Conta.class);
+		Root<Conta> from = query.from(Conta.class);
+		CriteriaQuery<Conta> select = query.select(from);
+		
+		TypedQuery<Conta> typedQuery = this.em.createQuery(select);
+		return typedQuery.getResultList();
 	}
 
 }
