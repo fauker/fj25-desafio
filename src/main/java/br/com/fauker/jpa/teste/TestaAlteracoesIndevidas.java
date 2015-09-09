@@ -5,7 +5,7 @@ import javax.persistence.EntityManager;
 import br.com.fauker.jpa.domain.Conta;
 import br.com.fauker.jpa.util.JPAUtil;
 
-public class TestaAlteracoesObjetosManageds {
+public class TestaAlteracoesIndevidas {
 	public static void main(String[] args) {
 		EntityManager manager = new JPAUtil().getEntityManager();
 		
