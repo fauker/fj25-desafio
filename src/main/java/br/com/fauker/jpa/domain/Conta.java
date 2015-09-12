@@ -1,9 +1,12 @@
 package br.com.fauker.jpa.domain;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Conta {
@@ -14,6 +17,21 @@ public class Conta {
 	private String titular;
 	private String numero;
 	private String agencia;
+	
+//	@OneToMany(mappedBy = "conta") 
+//	private List<Movimentacao> movimentacoes;
+	
+	@OneToMany
+	@JoinColumn(name = "id_conta")
+	private List<Movimentacao> movimentacoes;
+	
+	public List<Movimentacao> getMovimentacoes() {
+		return movimentacoes;
+	}
+	
+	public void setMovimentacoes(List<Movimentacao> movimentacoes) {
+		this.movimentacoes = movimentacoes;
+	}
 	
 	public Long getId() {
 		return id;
@@ -44,6 +62,5 @@ public class Conta {
 	public String toString() {
 		return "Titular " + this.titular +" - Conta: " + this.numero + " - Agencia: " + this.agencia;
  	}
-	
 	
 }
