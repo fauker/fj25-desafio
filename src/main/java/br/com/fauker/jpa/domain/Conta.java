@@ -18,12 +18,12 @@ public class Conta {
 	private String numero;
 	private String agencia;
 	
-//	@OneToMany(mappedBy = "conta") 
-//	private List<Movimentacao> movimentacoes;
-	
-	@OneToMany
-	@JoinColumn(name = "id_conta")
+	@OneToMany(mappedBy = "conta") 
 	private List<Movimentacao> movimentacoes;
+	
+//	@OneToMany
+//	@JoinColumn(name = "id_conta")
+//	private List<Movimentacao> movimentacoes;
 	
 	public List<Movimentacao> getMovimentacoes() {
 		return movimentacoes;
