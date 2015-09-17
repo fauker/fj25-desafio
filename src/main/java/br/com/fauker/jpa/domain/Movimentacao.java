@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -19,7 +20,7 @@ import br.com.fauker.jpa.enums.TipoMovimentacao;
 public class Movimentacao {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	@Temporal(TemporalType.TIMESTAMP)

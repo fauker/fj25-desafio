@@ -15,9 +15,9 @@ public class TestaInsereConta {
 		ContaDao dao = new ContaDao(em);
 		
 		Conta conta = new Conta();
-		conta.setAgencia("3413-4");
+		conta.setAgencia("3413-4"); 
 		conta.setNumero("32319-5");
-		conta.setTitular("Lucas Moreira");
+		conta.setTitular("Jaumzin Batista");
 		
 		em.getTransaction().begin();
 		

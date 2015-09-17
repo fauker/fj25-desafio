@@ -28,6 +28,12 @@
 
   <!--  atualiza o banco, gera as tabelas se for preciso -->
   <property name="hibernate.hbm2ddl.auto" value="update" />
+  <!-- configs do Hibernate Search -->
+<property name="hibernate.search.default.directory_provider"
+          value="filesystem"/>
+
+<property name="hibernate.search.default.indexBase"
+          value="/Users/fauker/Desktop"/>  
     
    </properties>
  </persistence-unit>
